@@ -41,7 +41,8 @@ function getPointGen() {
 	if(!canGenPoints())
 		return new ExpantaNum(0)
 
-	let gain = new ExpantaNum(1)
+	let gain = new ExpantaNum(2)
+	if (hasUpgrade("p", 11)) gain = gain.pow(upgradeEffect("p", 11))
 	return gain
 }
 

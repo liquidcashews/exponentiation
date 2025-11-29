@@ -25,7 +25,7 @@ addLayer("p", {
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     upgrades: {
-        11: {description: "Point generation is faster based on your points.",
+        11: {description: "Point generation is faster based on your things.",
                 cost: new ExpantaNum(1),
                 unlocked() { return (hasUpgrade(this.layer, 11))},
                 effect() { // Calculate bonuses from the upgrade. Can return a single value or an object with multiple values
