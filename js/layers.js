@@ -28,7 +28,6 @@ addLayer("p", {
         11: {title: "REBEX",
             description: "Point generation is faster based on your things.",
                 cost: new ExpantaNum(1),
-                unlocked() {return true},
                 effect() { // Calculate bonuses from the upgrade. Can return a single value or an object with multiple values
                     let ret = player[this.layer].points.add(1).pow(1.1)
                     if (ret.gte("1e20000000")) ret = ret.sqrt().times("1e10000000")
