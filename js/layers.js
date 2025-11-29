@@ -25,7 +25,7 @@ addLayer("p", {
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     upgrades: {
-        11: {title: "REBEX"
+        11: {title: "REBEX",
             description: "Point generation is faster based on your things.",
                 cost: new ExpantaNum(1),
                 unlocked() {return true},
