@@ -12,7 +12,7 @@ addLayer("p", {
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.5, // Prestige currency exponent
+    exponent: 1.1, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new ExpantaNum(1)
         return mult
@@ -24,5 +24,14 @@ addLayer("p", {
     hotkeys: [
         {key: "p", description: "P: Reset for prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true}
-})
+    upgrades: {
+        11: {description: "Point generation is faster based on your points.",
+                cost: new ExpantaNum(1),
+                unlocked() { return (hasUpgrade(this.layer, 11))},
+                effect() { // Calculate bonuses from the upgrade. Can return a single value or an object with multiple values
+                    let ret = player[this.layer].points.add(1).pow(1.1)
+                    if (ret.gte("1e20000000")) ret = ret.sqrt().times("1e10000000")
+                    return ret}
+                },
+    layerShown(){return true},
+}})
